@@ -1,0 +1,25 @@
+<?php
+
+function obtenerContactos(){
+    include 'bd.php';
+    try{
+        return $conn->query("SELECT id, nombre, empresa, telefono FROM contactos");
+    }catch(Exception $e){
+        echo "Error" . $e->getMessage() . "<br>";
+        return false;
+    }
+    
+}
+
+function obtenerContacto($id){
+    include 'bd.php';
+    $consulta = "SELECT id, nombre, empresa, telefono FROM contactos WHERE id = $id";
+    try{
+    return $conn->query($consulta);
+    }catch(Exception $e){
+        echo "Error" . $e->getMessage() . "<br>";
+        return false;
+    }
+}
+
+?>
